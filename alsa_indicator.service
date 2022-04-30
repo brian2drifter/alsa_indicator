@@ -1,0 +1,16 @@
+#/etc/systemd/system/alsa_indicator.service
+[Unit]
+Description=Alsa LED indicator
+
+[Service]
+Type=simple
+#ExecStartPre=/bin/sleep 30
+ExecStart=/usr/bin/nohup /home/pi/alsa_indicator.sh
+Restart=always
+RestartSec=30
+StandardOutput=/home/pi/alsa_indicator.log
+StandardError=/home/pi/alsa_indicator.log
+SyslogIdentifier=alsa_indicator
+
+[Install]
+WantedBy=multi-user.target
